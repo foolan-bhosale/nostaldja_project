@@ -1,0 +1,23 @@
+{% load static %}
+<html>
+  <head>
+    <title>nostaldja</title>
+        <link rel="stylesheet" href="{% static 'css/nostaldja.css' %}" />
+  </head>
+  <body>
+    <h1>Nostaldja</h1>
+    <nav>
+        <a href="/">Decade's</a>
+        <a href="/fads">Fad</a>
+        <div class="user-info">
+        {% if user.is_authenticated %} Welcome, {{ user.username }}
+        <a href="{% url 'logout' %}">Log out</a>
+        {% else %}
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'signup' %}">Signup</a>
+        {% endif %}
+  </div>
+    </nav>
+    {% block content %} {% endblock %}
+  </body>
+</html>

@@ -1,0 +1,13 @@
+{% extends 'nostaldja/base.html' %} {% block content %}
+<h2>{{fad.name}}   <a href="{% url 'fad_edit' pk=fad.pk %}">edit</a></h2>
+
+
+<img src="{{ fad.image_url }}" alt="Fad photo" class="fad-photo" />
+<p> Decade: <strong>{{fad.decade}}</strong></p>
+<p><strong>Description :</strong>{{ fad.description}}</p>
+    {% if fad.image %}
+<img src="{{fad.image.url}}" class="fad-photo" />
+    {% endif %}
+<a href="{% url 'fad_delete' pk=fad.pk %}">Delete</a>
+
+{% endblock %}
