@@ -15,12 +15,12 @@ urlpatterns = [
     path('fads/<int:pk>/delete', views.fad_delete, name='fad_delete'),
 
     #############             Class- based-views-path-urls            ##################
-    path('class/decades/', views.DecadeListView.as_view(), name='decade_list'),
-    path('class/decades/new/', views.DecadeCreateView.as_view(), name='decade_create'),
-    path('class/decades/<int:pk>',
-         views.DecadeDetailView.as_view(), name='decade_detail'),
-    path('class/decades/<int:pk>/edit', views.DecadeEditView.as_view(),
-         name='decade_edit'),
-    path('class/decades/<int:pk>/delete',
-         views.DecadeDeleteView.as_view(), name='decade_delete'),
+    # path('class/decades/', views.DecadeListView.as_view(), name='decade_list'),
+    #     path('class/decades/new/', views.DecadeCreateView.as_view(), name='decade_create'),
+    #     path('class/decades/<int:pk>',
+    #          views.DecadeDetailView.as_view(), name='decade_detail'),
+    #     path('class/decades/<int:pk>/edit', views.DecadeEditView.as_view(),
+    #          name='decade_edit'),
+    #     path('class/decades/<int:pk>/delete',
+    #          views.DecadeDeleteView.as_view(), name='decade_delete'),
 ]
