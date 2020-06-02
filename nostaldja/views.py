@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
+
 from .models import Decade, Fad
 from .forms import DecadeForm, FadForm
 from django.contrib.auth.decorators import login_required
-from django.views.generic import ListView
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 
 # Create your views here.
 
@@ -96,5 +98,34 @@ def fad_delete(request, pk):
 
 class DecadeListView(ListView):
     model = Decade
-    template_name = 'class_decade_list.html'
+    template_name = 'decade_list.html'
     context_object_name = 'decades'
+
+
+class DecadeCreateView(CreateView):
+    model = Decade
+    form_class = DecadeForm
+    success_url = reverse_lazy('decade_list')
+    template_name = 'nostaldja/decade_form.html'
+
+
+class DecadeDetailView(DetailView):
+    model = Decade
+    template_name = 'nostaldja/decade_detail.html'
+    context_object_name = 'decade'
+
+
+class DecadeEditView(UpdateView):
+    model = Decade
+    form_class = DecadeForm
+    template_name = 'nostaldja/decade_form.html'
+    context_object_name = 'decade'
+
+    def get_success_url(self):
+        return reverse_lazy('decade-detail', kwargs={'pk': self.object.id})
+
+
+class DecadeDeleteView(DeleteView):
+    model = Decade
+    template_name = 'nostaldja/decade_form.html'
+    success_url = reverse_lazy('decade-list')

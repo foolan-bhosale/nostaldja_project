@@ -13,5 +13,14 @@ urlpatterns = [
     path('fads/<int:pk>/edit', views.fad_edit, name='fad_edit'),
     path('decades/<int:pk>/delete', views.decade_delete, name='decade_delete'),
     path('fads/<int:pk>/delete', views.fad_delete, name='fad_delete'),
-    path('class/decades/', views.DecadeListView.as_view(), name='class_decade_list')
+
+    #############             Class- based-views-path-urls            ##################
+    path('class/decades/', views.DecadeListView.as_view(), name='decade_list'),
+    path('class/decades/new/', views.DecadeCreateView.as_view(), name='decade_create'),
+    path('class/decades/<int:pk>',
+         views.DecadeDetailView.as_view(), name='decade_detail'),
+    path('class/decades/<int:pk>/edit', views.DecadeEditView.as_view(),
+         name='decade_edit'),
+    path('class/decades/<int:pk>/delete',
+         views.DecadeDeleteView.as_view(), name='decade_delete'),
 ]
